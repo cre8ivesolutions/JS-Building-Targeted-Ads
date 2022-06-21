@@ -35,8 +35,8 @@ buildAd1()
 
 // build ad 2
 // Build Ad 2                                                             
-async function buildAd2(coordinates){
-    const coords = await coordinates
+function buildAd2(coordinates){
+    const coords = coordinates
     const href = `https://www.google.com/maps/search/coffee/@${coords[0]},${coords[1]},15z/`
     let content = document.querySelector('.ad2')
     let inner = document.createElement('p')
@@ -49,3 +49,9 @@ console.log(buildAd2(getCoords()))
 
 // event listeners
 // on load, build ads
+// On load, build ads:                                                             
+window.onload = async () => {
+    buildAd1()
+    const coords = await getCoords()
+    buildAd2(coords)
+}
